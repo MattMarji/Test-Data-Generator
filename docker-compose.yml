@@ -5,4 +5,5 @@ services:
       build: .
       volumes: 
         - .:/usr/src/app
-      command : [ "sh", "-c", "bundle install && rails s -p 3000 -b '0.0.0.0'"]
+      command : [ "sh", "-c", "rm -f tmp/pids/server.pid && bundle install && rails s -p 3000 -b '0.0.0.0'"]
+      container_name: test-data-generator

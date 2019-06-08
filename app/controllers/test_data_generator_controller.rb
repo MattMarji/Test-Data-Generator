@@ -1,8 +1,10 @@
 require 'faker'
+require 'json'
+
 class TestDataGeneratorController < ApplicationController    
 
 =begin
-    This generate function will generate non-sensitive test data that is psuedo-random.
+    This function will generate non-sensitive test data that is psuedo-random.
     Fake data expected output:
 
     [ { 
@@ -30,7 +32,7 @@ class TestDataGeneratorController < ApplicationController
                         :service_amount_paid => Faker::Number.decimal(Faker::Number.between(1, 5), 2),
                         :service_amount_currency => Faker::Currency.code
                     }
-            generated_data.push(test_case_hash)
+            generated_data.push(JSON.generate(test_case_hash))
             current_iteration +=1
         end
         return generated_data
